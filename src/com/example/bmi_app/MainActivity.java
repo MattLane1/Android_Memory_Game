@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.EditText;
  
@@ -30,7 +31,29 @@ public class MainActivity extends Activity {
  
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
- 
+		
+		/*
+		Button button = (Button)findViewById(R.id.imageButton1);
+		AbsoluteLayout.LayoutParams absParams = 
+		    (AbsoluteLayout.LayoutParams)button.getLayoutParams();
+		absParams.x = 50;
+		absParams.y = 20;
+		button.setLayoutParams(absParams);
+		
+		/*
+	    Button myButton = (Button) findViewById(R.id.imageButton1);
+		myButton.setX(20);
+		myButton.setY(20);
+		
+	/*	
+		myButton = (Button) findViewById(R.id.imageButton2);
+		myButton.setX(60);
+		
+		myButton = (Button) findViewById(R.id.imageButton3);
+		myButton.setX(120);
+		myButton.setY(120);
+		myButton.setY(120);
+ */
 		// components from main.xml
 		//button = (Button) findViewById(R.id.buttonPrompt);
 		//result = (EditText) findViewById(R.id.editTextResult);
