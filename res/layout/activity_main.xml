@@ -11,7 +11,8 @@
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cardback"/>
+        android:src="@drawable/cardback"
+     	android:onClick="myhandler"/>
             
         <ImageButton
         android:id="@+id/imageButton2"

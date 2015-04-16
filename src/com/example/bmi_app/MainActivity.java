@@ -18,116 +18,256 @@ import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
  
 //The beginning of the program
 public class MainActivity extends Activity {
  
 	final Context context = this;
-	private Button button;
 	private EditText result;
-	float BMI;
+
+	
 	//When the program is started...
 	public void onCreate(Bundle savedInstanceState) {
- 
+		
+	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		/*
-		Button button = (Button)findViewById(R.id.imageButton1);
-		AbsoluteLayout.LayoutParams absParams = 
-		    (AbsoluteLayout.LayoutParams)button.getLayoutParams();
-		absParams.x = 50;
-		absParams.y = 20;
-		button.setLayoutParams(absParams);
+		final ImageButton b1;
+		final ImageButton b2;
+		final ImageButton b3;
+		final ImageButton b4;
+		final ImageButton b5;
+		final ImageButton b6;
+		final ImageButton b7;
+		final ImageButton b8;
+		final ImageButton b9;
+		final ImageButton b10;
+		final ImageButton b11;
+		final ImageButton b12;
+		final ImageButton b13;
+		final ImageButton b14;
+		final ImageButton b15;
+		final ImageButton b16;
 		
-		/*
-	    Button myButton = (Button) findViewById(R.id.imageButton1);
-		myButton.setX(20);
-		myButton.setY(20);
+		//Button One Section
+	    b1 = (ImageButton) findViewById(R.id.imageButton1);    
+	    b1.setOnClickListener(new View.OnClickListener() {
 		
-	/*	
-		myButton = (Button) findViewById(R.id.imageButton2);
-		myButton.setX(60);
-		
-		myButton = (Button) findViewById(R.id.imageButton3);
-		myButton.setX(120);
-		myButton.setY(120);
-		myButton.setY(120);
- */
-		// components from main.xml
-		//button = (Button) findViewById(R.id.buttonPrompt);
-		//result = (EditText) findViewById(R.id.editTextResult);
- 
-		// add button listener
-	//	button.setOnClickListener(new OnClickListener() {
- /*
-			@Override//When the user clicks the calculate button. 
-			public void onClick(View arg0) {
- 
-				// get prompts.xml view
-				LayoutInflater li = LayoutInflater.from(context);
-				View promptsView = li.inflate(R.layout.prompts, null);
- 
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-						context);
- 
-				// set prompts.xml to alertdialog builder
-				alertDialogBuilder.setView(promptsView);
-				
-				//Get their info
-				final EditText userInputHeight = (EditText) promptsView
-						.findViewById(R.id.editTextDialogUserInputHeight);
-				
-				final EditText userInputWeight = (EditText) promptsView
-						.findViewById(R.id.editTextDialogUserInputWeight);
-				
-				
-				float height;
-				float weight;
-				String tempHeight;
-				String tempWeight;
-				
-				//Get info
-				tempHeight = userInputHeight.toString();
-				tempHeight = tempHeight.replaceAll("\\D+","");
-				
-				tempWeight = userInputWeight.toString();
-				tempWeight = tempWeight.replaceAll("\\D+","");
-				
-				//Switch to numbers
-				height = Float.parseFloat(tempHeight);
-				weight = Float.parseFloat(tempWeight);
-				
-				//Calculate BMI
-				BMI = ((weight * 703) / (height * height));
-				
-				// set dialog message
-				alertDialogBuilder
-					.setCancelable(false)
-					.setPositiveButton("OK",
-					  new DialogInterface.OnClickListener() {
-					    public void onClick(DialogInterface dialog,int id) {
-						// get user input and set it to result
-						// edit text
-						result.setText(Float.toString(BMI));
-					    }
-					  })
-					.setNegativeButton("Cancel",
-					  new DialogInterface.OnClickListener() {
-					    public void onClick(DialogInterface dialog,int id) {
-						dialog.cancel();
-					    }
-					  });
- 
-				// Create a dialog
-				AlertDialog alertDialog = alertDialogBuilder.create();
- 
-				// Show said dialog. 
-				alertDialog.show();
- 
-			}
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-		});
-		*/
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Two Section
+	    b2 = (ImageButton) findViewById(R.id.imageButton2);    
+	    b2.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Three Section
+	    b3 = (ImageButton) findViewById(R.id.imageButton3);    
+	    b3.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Four Section
+	    b4 = (ImageButton) findViewById(R.id.imageButton4);    
+	    b4.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Five Section
+	    b5 = (ImageButton) findViewById(R.id.imageButton5);    
+	    b5.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Six Section
+	    b6 = (ImageButton) findViewById(R.id.imageButton6);    
+	    b6.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Seven Section
+	    b7 = (ImageButton) findViewById(R.id.imageButton7);    
+	    b7.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Eight Section
+	    b8 = (ImageButton) findViewById(R.id.imageButton8);    
+	    b8.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button nine Section
+	    b9 = (ImageButton) findViewById(R.id.imageButton9);    
+	    b9.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Ten Section
+	    b10 = (ImageButton) findViewById(R.id.imageButton10);    
+	    b10.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Eleven Section
+	    b11 = (ImageButton) findViewById(R.id.imageButton11);    
+	    b11.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Twelve Section
+	    b12 = (ImageButton) findViewById(R.id.imageButton12);    
+	    b12.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Thirteen Section
+	    b13 = (ImageButton) findViewById(R.id.imageButton13);    
+	    b13.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Fourteen Section
+	    b14 = (ImageButton) findViewById(R.id.imageButton14);    
+	    b14.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Fifteen Section
+	    b15 = (ImageButton) findViewById(R.id.imageButton15);    
+	    b15.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
+	    //Button Sixteen Section
+	    b16 = (ImageButton) findViewById(R.id.imageButton16);    
+	    b16.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {//This function is called when a card is clicked. 
+			
+			 ImageButton aButton = (ImageButton)v;
+			 aButton.setImageResource(R.drawable.card_1c); 
+			
+		}
+	  });
+	    
 	}
 }
+	
+	
+
+		
+
+		
+	
+	  
+
+
