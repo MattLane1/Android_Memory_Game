@@ -7,6 +7,8 @@
 
 package com.example.bmi_app;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
  
@@ -25,14 +26,90 @@ public class MainActivity extends Activity {
  
 	final Context context = this;
 	private EditText result;
-
 	
+	//This array records what cards are where. The position in the array is the Button number it references. 
+	//While the valur at the location, is the cards value. 1-13 (ace - king)
+	int[] cardLocations = new int[16];
+	int[] cardsDrawn = new int[16];
+	int[] cardsPlaced = new int[16];
 	//When the program is started...
 	public void onCreate(Bundle savedInstanceState) {
 		
 	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		setUp();
+		drawCards();
+		placeCards();
+}
+	//Decides and records what cards to use.
+	public void drawCards(){
+		  Random rand = new Random();
+		  
+		  //This loop is run 8 times, each time it assigns a value between 1 (ace) and 13 (king)
+		  for (int drawEight = 0; drawEight < 16; drawEight ++ ){
+			  cardsDrawn[drawEight] = rand.nextInt((52 - 1) + 1) + 1;
+		  }
+	}
+	
+	//Decides and records where the drawn cards shall be placed. 
+	public void placeCards(){
+		  Random rand = new Random();
+		 
+		  //There are 16 possible locations any card could be in, so we loop 16 times
+		  for (int location = 0; location < 16; location ++ ){
+			 
+			  //Get a random card position 
+			  int local = rand.nextInt((16 - 1) + 1) + 1;
+			  boolean used = false;
+			  
+			  //This loop is comparing the new random value to all the values in the array. If it doesnt match, it is stored.
+			  for (int a = 0; a < cardLocations.length; a ++){
+				  
+				  if (local == cardLocations[a])
+					   used = true;
+			  }
+			  
+			  //The POSITION in the array is the buttons NUMBER, the VALUE is the TYPE of card to be used at the POSITION
+			  if (used == false)
+				  cardLocations[location] = local;
+			  	  
+		//	  cardsDrawn[drawEight] = rand.nextInt((52 - 1) + 1) + 1;
+		  }
+		  
+		  //Merge the arrays
+		  for (int a = 0; a < 16; a++)
+			     cardsPlaced[cardLocations[a]] = cardsDrawn[a];
+	}
+	
+	
+	//This function is called when a card is clicked
+	public void playGame(){
+		
+	}
+	
+	public void flipCard(View v){
+		 ImageButton aButton = (ImageButton)v;
+		 
+		 for (int b = 0; b < 16; b++){
+			 switch (cardsPlaced[b]){
+			 
+			 case 1:
+				 aButton.setImageResource(R.drawable.card_1c); 
+				 break;
+				 
+			default :
+				 aButton.setImageResource(R.drawable.card_10c); 
+				 break;
+			 }
+			 
+		 }
+		 
+	}
+	
+	//This rather hefty function created the objects of the buttons, and ties in the event handlers.
+	public void setUp(){
 		
 		final ImageButton b1;
 		final ImageButton b2;
@@ -57,10 +134,8 @@ public class MainActivity extends Activity {
 		
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
-			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
-			
+					 
+			 flipCard(v);
 		}
 	  });
 	    
@@ -261,6 +336,8 @@ public class MainActivity extends Activity {
 	    
 	}
 }
+	
+
 	
 	
 
