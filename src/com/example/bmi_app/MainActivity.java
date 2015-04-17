@@ -27,6 +27,8 @@ public class MainActivity extends Activity {
 	final Context context = this;
 	private EditText result;
 	
+	int onCard = -1;
+	
 	//This array records what cards are where. The position in the array is the Button number it references. 
 	//While the valur at the location, is the cards value. 1-13 (ace - king)
 	int[] cardLocations = new int[16];
@@ -43,6 +45,8 @@ public class MainActivity extends Activity {
 		drawCards();
 		placeCards();
 }
+	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//Decides and records what cards to use.
 	public void drawCards(){
 		  Random rand = new Random();
@@ -61,7 +65,7 @@ public class MainActivity extends Activity {
 		  for (int location = 0; location < 16; location ++ ){
 			 
 			  //Get a random card position 
-			  int local = rand.nextInt((16 - 1) + 1) + 1;
+			  int local = rand.nextInt((15 - 1) + 1) + 1;
 			  boolean used = false;
 			  
 			  //This loop is comparing the new random value to all the values in the array. If it doesnt match, it is stored.
@@ -77,37 +81,255 @@ public class MainActivity extends Activity {
 			  	  
 		//	  cardsDrawn[drawEight] = rand.nextInt((52 - 1) + 1) + 1;
 		  }
+		  AlertDialog.Builder dlgAlert2  = new AlertDialog.Builder(this);  
+		  dlgAlert2.setMessage("cards");
+		  String debug = "";
 		  
 		  //Merge the arrays
-		  for (int a = 0; a < 16; a++)
+		  for (int a = 0; a < 16; a++){
 			     cardsPlaced[cardLocations[a]] = cardsDrawn[a];
+			     
+			     dlgAlert2.setMessage("Card location..." + cardLocations[a]);
+			     dlgAlert2.create().show();
+			     
+			     debug = debug + cardsPlaced[cardLocations[a]] + ", ";
+		  }
+		//	 dlgAlert2.setTitle("Card array..." + debug);  
+		//	 dlgAlert2.create().show();
 	}
 	
-	
-	//This function is called when a card is clicked
-	public void playGame(){
-		
-	}
 	
 	public void flipCard(View v){
 		 ImageButton aButton = (ImageButton)v;
 		 
-		 for (int b = 0; b < 16; b++){
-			 switch (cardsPlaced[b]){
+		 AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);      
+		 dlgAlert.setTitle("Numbers");
+		 onCard ++;
+		 
+		 //for (int b = 0; b < 16; b++){
+			// dlgAlert.setTitle("Card chosen is..." + cardsPlaced[b]); 
+			 switch (cardsPlaced[onCard]){
 			 
 			 case 1:
 				 aButton.setImageResource(R.drawable.card_1c); 
 				 break;
 				 
-			default :
+			 case 2:
+				 aButton.setImageResource(R.drawable.card_2c); 
+				 break;
+				 
+			 case 3:
+				 aButton.setImageResource(R.drawable.card_3c); 
+				 break;
+				 
+			 case 4:
+				 aButton.setImageResource(R.drawable.card_4c); 
+				 break;
+				 
+			 case 5:
+				 aButton.setImageResource(R.drawable.card_5c); 
+				 break;
+				 
+			 case 6:
+				 aButton.setImageResource(R.drawable.card_6c); 
+				 break;
+				 
+			 case 7:
+				 aButton.setImageResource(R.drawable.card_7c); 
+				 break;
+				 
+			 case 8:
+				 aButton.setImageResource(R.drawable.card_8c); 
+				 break;
+				 
+			 case 9:
+				 aButton.setImageResource(R.drawable.card_9c); 
+				 break;
+				 
+			 case 10:
 				 aButton.setImageResource(R.drawable.card_10c); 
+				 break;
+				 
+			 case 11:
+				 aButton.setImageResource(R.drawable.card_11c); 
+				 break;
+				 
+			 case 12:
+				 aButton.setImageResource(R.drawable.card_12c); 
+				 break;
+				 
+			 case 13:
+				 aButton.setImageResource(R.drawable.card_13c); 
+				 break;
+				 
+			 case 14:
+				 aButton.setImageResource(R.drawable.card_1d); 
+				 break;
+				 
+			 case 15:
+				 aButton.setImageResource(R.drawable.card_2d); 
+				 break;
+				 
+			 case 16:
+				 aButton.setImageResource(R.drawable.card_3d); 
+				 break;
+				 
+			 case 17:
+				 aButton.setImageResource(R.drawable.card_4d); 
+				 break;
+				 
+			 case 18:
+				 aButton.setImageResource(R.drawable.card_5d); 
+				 break;
+				 
+			 case 19:
+				 aButton.setImageResource(R.drawable.card_6d); 
+				 break;
+				 
+			 case 20:
+				 aButton.setImageResource(R.drawable.card_7d); 
+				 break;
+				 
+			 case 21:
+				 aButton.setImageResource(R.drawable.card_8d); 
+				 break;
+				 
+			 case 22:
+				 aButton.setImageResource(R.drawable.card_9d); 
+				 break;
+				 
+			 case 23:
+				 aButton.setImageResource(R.drawable.card_10d); 
+				 break;
+				 
+			 case 24:
+				 aButton.setImageResource(R.drawable.card_11d); 
+				 break;
+				 
+			 case 25:
+				 aButton.setImageResource(R.drawable.card_12d); 
+				 break;
+				 
+			 case 26:
+				 aButton.setImageResource(R.drawable.card_13d); 
+				 break;
+				 
+			 case 27:
+				 aButton.setImageResource(R.drawable.card_1h); 
+				 break;
+				 
+			 case 28:
+				 aButton.setImageResource(R.drawable.card_2h); 
+				 break;
+				 
+			 case 29:
+				 aButton.setImageResource(R.drawable.card_3h); 
+				 break;
+				 
+			 case 30:
+				 aButton.setImageResource(R.drawable.card_4h); 
+				 break;
+				 
+			 case 31:
+				 aButton.setImageResource(R.drawable.card_5h); 
+				 break;
+				 
+			 case 32:
+				 aButton.setImageResource(R.drawable.card_6h); 
+				 break;
+				 
+			 case 33:
+				 aButton.setImageResource(R.drawable.card_7h); 
+				 break;
+				 
+			 case 34:
+				 aButton.setImageResource(R.drawable.card_8h); 
+				 break;
+				 
+			 case 35:
+				 aButton.setImageResource(R.drawable.card_9h); 
+				 break;
+				 
+			 case 36:
+				 aButton.setImageResource(R.drawable.card_10h); 
+				 break;
+				 
+			 case 37:
+				 aButton.setImageResource(R.drawable.card_11h); 
+				 break;
+				 
+			 case 38:
+				 aButton.setImageResource(R.drawable.card_12h); 
+				 break;
+				 
+			 case 39:
+				 aButton.setImageResource(R.drawable.card_13h); 
+				 break;
+				 
+			 case 40:
+				 aButton.setImageResource(R.drawable.card_1s); 
+				 break;
+				 
+			 case 41:
+				 aButton.setImageResource(R.drawable.card_2s); 
+				 break;
+				 
+			 case 42:
+				 aButton.setImageResource(R.drawable.card_3s); 
+				 break;
+				 
+			 case 43:
+				 aButton.setImageResource(R.drawable.card_4s); 
+				 break;
+				 
+			 case 44:
+				 aButton.setImageResource(R.drawable.card_5s); 
+				 break;
+				 
+			 case 45:
+				 aButton.setImageResource(R.drawable.card_6s); 
+				 break;
+				 
+			 case 46:
+				 aButton.setImageResource(R.drawable.card_7s); 
+				 break;
+				 
+			 case 47:
+				 aButton.setImageResource(R.drawable.card_8s); 
+				 break;
+				 
+			 case 48:
+				 aButton.setImageResource(R.drawable.card_9s); 
+				 break;
+				 
+			 case 49:
+				 aButton.setImageResource(R.drawable.card_10s); 
+				 break;
+				 
+			 case 50:
+				 aButton.setImageResource(R.drawable.card_11s); 
+				 break;
+				 
+			 case 51:
+				 aButton.setImageResource(R.drawable.card_12s); 
+				 break;
+				 
+			 case 52:
+				 aButton.setImageResource(R.drawable.card_13s); 
+				 break;
+				 
+				
+			default :
+				 dlgAlert.setTitle("Bad card! = " + cardsPlaced[onCard]);
+				 dlgAlert.show();
+				 aButton.setImageResource(R.drawable.ic_launcher); 
 				 break;
 			 }
 			 
 		 }
 		 
-	}
-	
+//	}
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//This rather hefty function created the objects of the buttons, and ties in the event handlers.
 	public void setUp(){
 		
@@ -146,8 +368,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -159,8 +380,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -172,8 +392,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -185,8 +404,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -198,8 +416,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v); 
 			
 		}
 	  });
@@ -211,8 +428,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -224,8 +440,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -237,8 +452,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v); 
 			
 		}
 	  });
@@ -250,8 +464,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -263,8 +476,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -276,8 +488,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -289,8 +500,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -302,8 +512,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -315,8 +524,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
@@ -328,8 +536,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			 ImageButton aButton = (ImageButton)v;
-			 aButton.setImageResource(R.drawable.card_1c); 
+			flipCard(v);
 			
 		}
 	  });
