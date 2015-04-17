@@ -7,6 +7,9 @@
 
 package com.example.bmi_app;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import android.app.Activity;
@@ -31,9 +34,15 @@ public class MainActivity extends Activity {
 	
 	//This array records what cards are where. The position in the array is the Button number it references. 
 	//While the valur at the location, is the cards value. 1-13 (ace - king)
-	int[] cardLocations = new int[16];
+	
 	int[] cardsDrawn = new int[16];
 	int[] cardsPlaced = new int[16];
+	
+	int[] cardLocations = new int[16];
+	int [] cards = new int[16];
+	
+	ArrayList<Integer> cardList = new ArrayList<Integer>();
+	
 	//When the program is started...
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -41,20 +50,67 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//Fill the array with 999. This will be our flag that the location is not set yet. 
+		for (int a = 0; a < 16; a++)
+			cardLocations[a] = 999;
+		
 		setUp();
 		drawCards();
-		placeCards();
+		decideCards();
+		shuffleCards();
 }
 	
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//Decides and records what cards to use.
 	public void drawCards(){
 		  Random rand = new Random();
+		  int cardVal;
 		  
 		  //This loop is run 8 times, each time it assigns a value between 1 (ace) and 13 (king)
 		  for (int drawEight = 0; drawEight < 16; drawEight ++ ){
-			  cardsDrawn[drawEight] = rand.nextInt((52 - 1) + 1) + 1;
+			  cardVal = rand.nextInt((52 - 1) + 1) + 1;
+			  
+			  if (Arrays.asList(cards[drawEight]).contains(cardVal) == false)
+			  cards[drawEight] = cardVal;
+			  
+			  else
+				  drawEight --;
 		  }
+	}
+	
+	//This function organizes the cards into the card placement array, they are placed side by side and then randomized. 
+	public void decideCards(){
+		int card;
+		String ar = "";
+		
+		for (int a = 0; a < 16; a+=2){
+			card = cards[a];
+			
+			cardLocations[a] = card;
+			cardLocations[(a + 1)] = card;
+		}
+		
+		for (int z = 0; z < 16; z ++)
+			ar = ar + cardLocations[z] + ", ";
+		
+		System.out.println("The card array = " + ar);
+	}
+	
+	public void shuffleCards(){
+		
+		String ak = "";
+		
+		for(int i=0;i<16;i++)
+		{
+		    cardList.add(cardLocations[i]);
+		}
+		
+		Collections.shuffle(cardList);
+		
+		for (int z = 0; z < 16; z ++)
+			ak = ak + cardList.get(z) + ", ";
+		
+		System.out.println("The SHUFFLED card array = " + ak);
 	}
 	
 	//Decides and records where the drawn cards shall be placed. 
@@ -99,16 +155,18 @@ public class MainActivity extends Activity {
 	}
 	
 	
-	public void flipCard(View v){
+	public void flipCard(View v, int buttonNumber){
+		//The array starts at 0, the first button is 1. This compensated for that.
+		buttonNumber --;
+		
 		 ImageButton aButton = (ImageButton)v;
 		 
 		 AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);      
 		 dlgAlert.setTitle("Numbers");
 		 onCard ++;
 		 
-		 //for (int b = 0; b < 16; b++){
-			// dlgAlert.setTitle("Card chosen is..." + cardsPlaced[b]); 
-			 switch (cardsPlaced[onCard]){
+
+			 switch (cardList.get(buttonNumber)){
 			 
 			 case 1:
 				 aButton.setImageResource(R.drawable.card_1c); 
@@ -357,7 +415,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 					 
-			 flipCard(v);
+			 flipCard(v, 1);
 		}
 	  });
 	    
@@ -368,7 +426,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 2);
 			
 		}
 	  });
@@ -380,7 +438,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 3);
 			
 		}
 	  });
@@ -392,7 +450,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 4);
 			
 		}
 	  });
@@ -404,7 +462,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 5);
 			
 		}
 	  });
@@ -416,7 +474,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v); 
+			flipCard(v, 6); 
 			
 		}
 	  });
@@ -428,7 +486,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 7);
 			
 		}
 	  });
@@ -440,7 +498,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 8);
 			
 		}
 	  });
@@ -452,7 +510,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v); 
+			flipCard(v, 9); 
 			
 		}
 	  });
@@ -464,7 +522,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 10);
 			
 		}
 	  });
@@ -476,7 +534,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 11);
 			
 		}
 	  });
@@ -488,7 +546,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 12);
 			
 		}
 	  });
@@ -500,7 +558,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 13);
 			
 		}
 	  });
@@ -512,7 +570,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 14);
 			
 		}
 	  });
@@ -524,7 +582,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 15);
 			
 		}
 	  });
@@ -536,7 +594,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {//This function is called when a card is clicked. 
 			
-			flipCard(v);
+			flipCard(v, 16);
 			
 		}
 	  });
